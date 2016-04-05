@@ -1,0 +1,12 @@
+﻿生成启动时间为 2015/12/23 20:55:26。
+     1>项目“G:\我的坚果云\比特C语言上课程序\继承多态作业\继承多态作业\继承多态作业.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\工具\VS2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt "源.cpp"
+         源.cpp
+     1>g:\我的坚果云\比特c语言上课程序\继承多态作业\继承多态作业\标头.h(98): error C2385: 对“Botany”的访问不明确
+     1>g:\我的坚果云\比特c语言上课程序\继承多态作业\继承多态作业\标头.h(98): error C2614: “MicheliaAlba”: 非法的成员初始化:“Botany”不是基或成员
+     1>已完成生成项目“G:\我的坚果云\比特C语言上课程序\继承多态作业\继承多态作业\继承多态作业.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.70

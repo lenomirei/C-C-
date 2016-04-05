@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "画星星（经常忘，需要经常看）", "画星星（经常忘，需要经常看）\画星星（经常忘，需要经常看）.vcxproj", "{8C766199-89A9-497D-B4AB-2FA9E1B5C19D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C766199-89A9-497D-B4AB-2FA9E1B5C19D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C766199-89A9-497D-B4AB-2FA9E1B5C19D}.Debug|Win32.Build.0 = Debug|Win32
+		{8C766199-89A9-497D-B4AB-2FA9E1B5C19D}.Release|Win32.ActiveCfg = Release|Win32
+		{8C766199-89A9-497D-B4AB-2FA9E1B5C19D}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
