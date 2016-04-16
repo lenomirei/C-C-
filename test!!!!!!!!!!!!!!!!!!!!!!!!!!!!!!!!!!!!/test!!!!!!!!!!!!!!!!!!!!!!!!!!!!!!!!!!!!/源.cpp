@@ -3,23 +3,20 @@
 using namespace std;
 
 
-
-template<class T>
-class class1
+class test
 {
-	T a;
+public:
+	virtual void fun() 
+	{}
+public:
+	static int a;
+	int b;
 };
-
-template < class T, template<class> class class1 >
-class class2
-{
-	T b;
-	class1<T> c;
-};
-
 
 
 int main()
 {
+
+	cout << sizeof(test);
 	return 0;
-}
+	}

@@ -62,5 +62,6 @@ int main()
 	bt.Set(1);
 	bt.Set(4);
 	bt.Set(33);
+	bt.Set(4);
 	return 0;
 }

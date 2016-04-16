@@ -164,7 +164,7 @@ struct testnode
 	}
 };
 
-void QuickSort_Non(int *a)
+void QuickSort_NonR(int *a)
 {
 	stack<testnode> s;
 	s.push(testnode(0, 9));
@@ -209,4 +209,62 @@ void TestQuickSort_Non()
 
 }
 
+//#include<vector>
+//void MergeSort_NonR(int *a,int *tmp,size_t size)
+//{
+//
+//	vector<int> gaparray;
+//	int c = 2;
+//	while (size / c)
+//	{
+//		gaparray.push_back(size / c);
+//		c *= 2;
+//	}
+//	int gap = 0;//就是小区间的长度，i设置为两个小区间开始的位置，加上两个gap就可以得到两个小区间结束的位置
+//	while (!gaparray.empty())
+//	{
+//		for (int i = 0; i + 2 * gap < size; ++i)
+//		{
+//			MergeSelection(a, tmp, i, i + gap, i + gap + 1, i + 2 * gap + 1);
+//			memcpy(a + i, tmp + i, sizeof(int)*(i + 2 * gap + 1 - i + 1));
+//		}
+//		
+//		gap = gaparray.back();
+//		gaparray.pop_back();
+//	}
+//}
+//
+//
+//void TestMergeSort_NonR()
+//{
+//	int a[10] = { 7,8,3,0,5,5,1,2,9,4 };
+//	int tmp[10];
+//	MergeSort_NonR(a,tmp, 10);
+//}
 
+int a[10] = { 7,8,3,0,5,5,1,2,9,4 };
+int tmp[10];
+void MergeSort_NonR(int *a1 ,int *tmp1,size_t size)
+{
+	int i;
+	int gap = 2;
+	while (gap < size)
+	{
+		for (i = 0; i + gap - 1< size;i+=gap)
+		{
+			MergeSelection(a, tmp, i, i + gap / 2 - 1, i + gap / 2, i + gap - 1);
+			memcpy(a + i, tmp + i, sizeof(int)*(gap));
+
+		}
+		MergeSelection(a, tmp, i - gap, i - 1, i, size - 1);
+		memcpy(a + i - gap, tmp + i - gap, sizeof(int)*(size - (i - gap)));
+		gap *= 2;
+	}
+}
+
+
+void TestMergeSort_NonR()
+{
+	
+	MergeSort_NonR(a, tmp, 10);
+}
