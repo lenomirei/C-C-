@@ -1,0 +1,20 @@
+﻿生成启动时间为 2016/4/17 14:47:19。
+     1>项目“G:\我的坚果云\C语言程序\Project1\Project1\Project1.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>ClCompile:
+         E:\工具\VS2015\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>e:\工具\vs2015\vc\include\hash_map(17): error C2338: <hash_map> is deprecated and will be REMOVED. Please use <unordered_map>. You can define _SILENCE_STDEXT_HASH_DEPRECATION_WARNINGS to acknowledge that you have received this warning.
+     1>g:\我的坚果云\c语言程序\project1\project1\huffmantree.h(132): warning C4554: “&”: 检查运算符优先级可能存在的错误；使用圆括号阐明优先级
+     1>g:\我的坚果云\c语言程序\project1\project1\huffmantree.h(145): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(24): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(33): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(54): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(71): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(117): warning C4018: “<”: 有符号/无符号不匹配
+     1>g:\我的坚果云\c语言程序\project1\project1\filecompress.h(204): warning C4018: “<”: 有符号/无符号不匹配
+     1>已完成生成项目“G:\我的坚果云\C语言程序\Project1\Project1\Project1.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:05.76

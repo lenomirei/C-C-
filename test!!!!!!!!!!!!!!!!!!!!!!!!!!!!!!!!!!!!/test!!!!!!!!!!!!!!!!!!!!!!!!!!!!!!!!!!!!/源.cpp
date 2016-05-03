@@ -1,22 +1,17 @@
 #include<iostream>
-
+#include<windows.h>
 using namespace std;
-
-
-class test
-{
-public:
-	virtual void fun() 
-	{}
-public:
-	static int a;
-	int b;
-};
 
 
 int main()
 {
-
-	cout << sizeof(test);
-	return 0;
+	WIN32_FIND_DATAA p;
+	char *tmp = "*.*";
+	HANDLE h = FindFirstFileA(tmp, &p);
+	cout << p.cFileName << endl;
+	while (FindNextFileA(h,&p))
+	{
+		cout << p.cFileName << endl;
 	}
+	return 0;
+}
