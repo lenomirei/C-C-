@@ -20,7 +20,7 @@ public:
 		_map.resize((num >> 5) + 1);
 		size_t index = (num >> 5);
 		size_t n = num % 32;
-		if (!(_map[index] & (1 << (num % 5))))
+		if (!(_map[index] & (1 << (num % 32))))
 		{
 			_map[index] = _map[index] | (1 << n);
 			_size++;
@@ -33,7 +33,7 @@ public:
 	{
 		size_t index = (num >> 5);
 		size_t n = num % 32;
-		if (_map[index] & (1 << (num % 5)))
+		if (_map[index] & (1 << (num % 32)))
 		{
 			_map[index] = _map[index] & (~(1 << n));
 			return true;
@@ -43,7 +43,7 @@ public:
 	bool Test(int num)
 	{
 		size_t index = (num >> 5);
-		return _map[index] & (1 << (num % 5));
+		return _map[index] & (1 << (num % 32));
 	}
 
 protected:

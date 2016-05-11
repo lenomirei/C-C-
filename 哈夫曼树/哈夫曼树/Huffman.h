@@ -3,7 +3,6 @@
 #include<vector>
 #include<stack>
 #include<string>
-//#include"bitmap.h"
 using namespace std;
 
 template<class T>

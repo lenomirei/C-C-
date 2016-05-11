@@ -1,37 +1,37 @@
-#include<stdio.h>
-#include<string.h>
-#include<assert.h>
+//#include<stdio.h>
+//#include<string.h>
+//#include<assert.h>
 
 //╤оят
 //т╓ят
 
-char *my_strcat(char *Dest,const char *Src)
-{
-	assert(Dest!=NULL && Src!=NULL);
-
-	char *pDest = Dest;
-	const char *pSrc = Src;
-
-	while(*pDest++ != '\0');
-	pDest--;
-	while(*pSrc != '\0')
-	{
-		*pDest++ = *pSrc++;
-	}
-	*pDest = '\0';
-	return Dest;
-}
-
-void main()
-{
-	char *p = NULL;
-	char str[20] = "hello";
-	char *str1 = "world";
-	printf("str = %s\n",str);
-	p = my_strcat(str,str1);
-	printf("str = %s\n",str);
-	printf("str = %s\n",p);
-}
+//char *my_strcat(char *Dest,const char *Src)
+//{
+//	assert(Dest!=NULL && Src!=NULL);
+//
+//	char *pDest = Dest;
+//	const char *pSrc = Src;
+//
+//	while(*pDest++ != '\0');
+//	pDest--;
+//	while(*pSrc != '\0')
+//	{
+//		*pDest++ = *pSrc++;
+//	}
+//	*pDest = '\0';
+//	return Dest;
+//}
+//
+//void main()
+//{
+//	char *p = NULL;
+//	char str[20] = "hello";
+//	char *str1 = "world";
+//	printf("str = %s\n",str);
+//	p = my_strcat(str,str1);
+//	printf("str = %s\n",str);
+//	printf("str = %s\n",p);
+//}
 
 
 /*
@@ -225,3 +225,101 @@ void main()
 	ch2 = ch;
 }
 */
+
+
+#include<iostream>
+#include<cassert>
+using namespace std;
+
+void *my_memset(void *s, int ch, size_t n)
+{
+	assert(s);
+	char *ptr = (char *)s;
+	for (size_t i = 0; i < n; ++i)
+	{
+		*(ptr++) = ch;
+	}
+	return s;
+}
+
+
+int main()
+{
+	char s[10];
+	my_memset(s,'a',10);
+	return 0;
+}
+
+
+#include<iostream>
+#include<cassert>
+using namespace std;
+
+void *my_memcpy(void *dest, void *src, size_t n)
+{
+	assert(dest && src);
+	char *pdest = (char *)dest;
+	char *psrc = (char *)src;
+	for (size_t i = 0; i < n; ++i)
+	{
+		*(pdest++) = *(psrc++);
+	}
+	return dest;
+}
+
+int main()
+{
+	return 0;
+}
+
+
+
+
+#include<iostream>
+#include<cassert>
+using namespace std;
+
+
+void *my_memcpy(void *dest, void *src, size_t n)
+{
+	assert(dest && src);
+	char *pdest = (char *)dest;
+	char *psrc = (char *)src;
+	for (size_t i = 0; i < n; ++i)
+	{
+		*(pdest++) = *(psrc++);
+	}
+	return dest;
+}
+void *my_memmove(void *dest, void *src, size_t count)
+{
+	assert(dest && src);
+	char *pdest = (char *)dest;
+	char *psrc = (char *)src;
+	if (psrc + count > pdest)
+	{
+		for (int i = count - 1; i >= 0; i--)
+		{
+			*(pdest + i) = *(psrc + i);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < count; ++i)
+		{
+			*(pdest + i) = *(psrc + i);
+		}
+	}
+	return dest;
+}
+
+
+
+int main()
+{
+	char s1[] = "hello world";
+	char s2[] = "hello world";
+	my_memmove(s1+3,s1,6);
+	my_memcpy(s2+3, s2 , 6);
+	return 0;
+}
