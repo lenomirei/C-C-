@@ -1,154 +1,209 @@
+//
+//#include<iostream>
+//using namespace std;
+//
+//
+//class A 
+//{
+//public:
+//	virtual void func()
+//	{
+//	}
+//	int _a;
+//};
+//class B :virtual public A
+//{
+//public:
+//	void func()
+//	{
+//	}
+//	int _b;
+//};
+//class C :virtual public A
+//{
+//public:
+//	void func()
+//	{
+//	}
+//	int _c;
+//};
+//class D :public B,public C
+//{
+//public:
+//	void func()
+//	{
+//	}
+//	int _d;
+//};
+//
+//
+//
+//
+//int main()
+//{
+//	D d;
+//	B b;
+//	b._b = 1;
+//	cout << sizeof(A) << endl;
+//	cout << sizeof(B) << endl;
+//	cout << sizeof(C) << endl;
+//	cout << sizeof(D) << endl;
+//	return 0;
+//}
+//
+//
+//
+//
+//
+//
+//
+////#include<iostream>
+////using namespace std;
+////
+////
+////
+////class A
+////{
+////
+////public:
+////	A()
+////	{
+////		cout << "A:构造函数" << endl;
+////	}
+////	A(const A& a)
+////	{
+////		cout << "A:拷贝构造函数" << endl;
+////	}
+////	//A operator=(const A& a)
+////	//{
+////	//	cout << "A:赋值运算符重载函数" << endl;
+////	//	return a;
+////	//}
+////};
+////
+////A f(A a)
+////{
+////	return a;
+////}
+////
+////
+////
+////
+////void Test1()
+////{
+////	A a1;
+////	a1 = f(a1);//两次拷贝构造
+////	cout << "-----------------------" << endl;
+////}
+////void Test2()
+////{
+////	A a1;
+////	A a2 = f(a1);//三次拷贝构造
+////	cout << "-----------------------" << endl;
+////}
+////void Test3()
+////{
+////	A a1;
+////	A a2 = f(f(a1));//三次拷贝构造
+////	cout << "-----------------------" << endl;
+////}
+////
+////
+////int main()
+////{
+////	Test1();
+////	Test2();
+////	Test3();
+////	return 0;
+////}
+
 #include<iostream>
-#include<cassert>
 using namespace std;
 
-
-int my_strlen(const char * str)
+void QuickSort(int *a,size_t length)
 {
-	assert(str);
-	int count = 0;
-	const char *ptr = str;
-	while (*(ptr++) != '\0')
+	if (length < 1)
 	{
-		count++;
+		return;
 	}
-	return count;
+	int value = a[0];
+	int start = 0;
+	int end = length - 1;
+
+	while (start < end)
+	{
+		for (; start < end; end--)
+		{
+			if (a[end] < value)
+			{
+				a[start++] = a[end];
+				break;
+			}
+		}
+		for (; start < end; start++)
+		{
+			if (a[start]>value)
+			{
+				a[end--] = a[start];
+				break;
+			}
+		}
+	}
+	a[start] = value;
+
+
+	QuickSort(a, start);
+	QuickSort(a + start + 1, length - start - 1);
 }
+
+
+void MergeSelection(int *a, int begin1, int end1, int begin2, int end2, int *tmp)
+{
+	int index = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] < a[begin2])
+			tmp[index++] = a[begin1++];
+		else
+			tmp[index++] = a[begin2++];
+	}
+	while (begin1 <= end1)
+	{
+		tmp[index++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[index++] = a[begin2++];
+	}
+}
+
+
+
+void MergeSort(int *a,int left,int right,int *tmp)
+{
+	int mid = left + (right - left) / 2;
+
+	if (left < right)
+	{
+		MergeSort(a,left,mid,tmp);
+		MergeSort(a,mid+1,right,tmp);
+		MergeSelection(a,left,mid,mid+1,right,tmp);
+		memcpy(a + left, tmp + left, sizeof(int)*(right - left + 1));
+	}
+	
+}
+
+
+
+
 
 
 int main()
 {
-	char *str = "hehe";
-	cout << my_strlen(str) << endl;
-	return 0;
-}
+	int tmp[10] = {0};
+	int a[] = { 6,7,8,9,0,1,2,3,4,5 };
+//	QuickSort(a, 10);
+	MergeSort(a, 0,9,tmp);
 
-
-
-
-#include<iostream>
-#include<cassert>
-using namespace std;
-
-int _strlen_R(const char *str)
-{
-	assert(str);
-	return my_strlen_R(str);
-}
-
-int my_strlen_R(const char *str)
-{
-	if (*str == '\0')
-	{
-		return 0;
-	}
-	return 1 + my_strlen_R(str + 1);
-}
-
-
-
-int main()
-{
-	char *str = "hehe";
-	cout << my_strlen_R(str) << endl;
-	return 0;
-}
-
-
-
-#include<iostream>
-#include<cassert>
-using namespace std;
-
-char *my_strcpy(char *dest,const char *src)
-{
-	assert(dest && src);
-	char *pdest = dest;
-	const char *psrc = src;
-	while (*psrc != '\0')
-	{
-		*(pdest++) = *(psrc++);
-	}
-	*pdest = '\0';
-	return dest;
-}
-
-
-
-int main()
-{
-	char s1[] = "hahaha";
-	char s2[] = "hao";
-	cout << my_strcpy(s1, s2) << endl;
-	return 0;
-}
-
-
-
-#include<iostream>
-#include<cassert>
-using namespace std;
-
-
-char *my_strcat(char *dest,const char *src)
-{
-	assert(dest && src);
-	char *pdest = dest;
-	const char *psrc = src;
-	while (*pdest != '\0')
-	{
-		pdest++;
-	}
-	while (*psrc != '\0')
-	{
-		*(pdest++) = *(psrc++);
-	}
-	*pdest = '\0';
-	return dest;
-
-}
-int main()
-{
-	char s1[20] = "hello";
-	char s2[] = "world";
-	cout << my_strcat(s1, s2) << endl;
-	return 0;
-}
-
-
-
-#include<iostream>
-#include<cassert>
-using namespace std;
-
-
-
-int my_strcmp(const char *str1, const char *str2)
-{
-	assert(str1 && str2);
-	const char *pstr1 = str1;
-	const char *pstr2 = str2;
-	while (*pstr1 != '\0'&& *pstr2 != '\0')
-	{
-		pstr1++;
-		pstr2++;
-	}
-	if (*pstr1)
-	{
-		return 1;
-	}
-	if (*pstr2)
-	{
-		return -1;
-	}
-	return 0;
-}
-
-
-int main()
-{
-	char s1[] = "helloword";
-	char s2[] = "helloword";
-	cout << my_strcmp(s1, s2) << endl;
 	return 0;
 }

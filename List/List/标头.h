@@ -40,6 +40,7 @@ public:
 		struct ListNode *del=_head;
 		while (_head)
 		{
+			del = _head;
 			_head = _head->_next;
 			delete del;
 		}
@@ -63,25 +64,65 @@ public:
 		struct ListNode *cur = _head;
 		while (cur)
 		{
-			cout << cur->_data << "->" << endl;
+			cout << cur->_data << "->";
+			cur = cur->_next;
 		}
+		cout << "NULL" << endl;
 	}
 	void PopBack()
 	{
 		//1.没有节点
+		if (_head == NULL)
+		{
+			cout << "没有节点" << endl;
+		}
 		//2.只有一个节点
+		else if (_head->_next == NULL)
+		{
+			delete _head;
+			_head = NULL;
+			_tail = NULL;
+		}
 		//3.一个或者以上节点
+		else
+		{
+			ListNode *cur = _head;
+			while (cur->_next != _tail)
+			{
+				cur = cur->_next;
+			}
+			cur->_next = _tail->_next;
+			delete _tail;
+			_tail = cur;
+		}
 	}
-	ListNode &Find()
+	ListNode *Find(int x)
 	{
-
+		ListNode *cur = _head;
+		while (cur)
+		{
+			if (cur->_data == x)
+			{
+				return cur;
+			}
+			cur = cur->_next;
+		}
+		return NULL;
 	}
 	void Insert(ListNode *pos,const DataType x)
 	{
-
+		ListNode *tmp = new ListNode(x);
+		tmp->_next = pos->_next;
+		pos->_next = tmp;
 	}
-	void Erase(ListNode *pos)
+	void Erase(ListNode *pos)//待议函数
 	{
+		if (pos == _head)
+		{
+			ListNode *tmp = _head;
+			_head = _head->_next;
+			delete tmp;
+		}
 
 	}
 	void Swap(List &l)
@@ -108,10 +149,19 @@ public:
 		}
 		_head = _tail = NULL;
 	}
-
-	void merge()//接合
+	void Reverse()
 	{
-
+		ListNode *newhead = NULL;
+		ListNode *cur = _head;
+		ListNode *tmp = _head;
+		while (cur)
+		{
+			tmp = cur;
+			cur = cur->_next;
+			tmp->_next = newhead;
+			newhead = tmp;
+		}
+		_head = newhead;
 	}
 private:
 	struct ListNode *_head;

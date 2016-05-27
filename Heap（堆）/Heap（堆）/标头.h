@@ -3,24 +3,36 @@
 #include<vector>
 using namespace std;
 
-
-
-//template<class T, class Compare=less<T>>
-//template<class T>
-//struct Less
-//{
-//	bool operator()
-//	{
-//
-//	}
-//};
-
-
+template<class T>
+struct Less
+{
+	bool  operator()(const T& l,const T& r)
+	{
+		return l < r;
+	}
+};
 
 template<class T>
+struct Greater
+{
+	bool operator()(const T& l ,const T& r)
+	{
+		return l > r;
+	}
+};
+
+
+
+
+
+template<class T, class Compare = Less<T>>
 class Heap
 {
 public:
+	Heap()
+	{
+
+	}
 	Heap(vector<T> a)
 		:array(a)
 	{
@@ -47,7 +59,7 @@ public:
 	void Push(T x)
 	{
 		array.push_back(x);
-		AdjustUp((array.size()-2)/2);
+		AdjustUp(array.size()-1);
 	}
 	void Pop()
 	{
@@ -60,11 +72,11 @@ public:
 		int child = root * 2 + 1;
 		while (child < array.size())
 		{
-			if (child + 1 < array.size() && array[child + 1] < array[child])
+			if (child + 1 < array.size() && Compare()(array[child + 1], array[child]))
 			{
 				child++;
 			}
-			if (array[root] > array[child])
+			if (Compare(array[root], array[child]))
 			{
 				swap(array[root], array[child]);
 				root = child;
@@ -76,20 +88,16 @@ public:
 			}
 		}
 	}
-	void AdjustUp(int root)
+	void AdjustUp(int child)
 	{
-		int child = root * 2 + 1;
-		while (child != 0)
+		int parent = (child - 1) / 2;
+		while (child > 0)
 		{
-			if (child + 1 < array.size() && array[child + 1] < array[child])
+			if (Compare()(array[child], array[parent]))
 			{
-				child++;
-			}
-			if (array[root] > array[child])
-			{
-				swap(array[root], array[child]);
-				child = root;
-				root = (child - 1) / 2;
+				swap(array[child], array[parent]);
+				child = parent;
+				parent = (child - 1) / 2;
 			}
 			else
 			{
@@ -114,3 +122,13 @@ protected:
 };
 
 
+void TestHeap()
+{
+	Heap<int> hp;
+	int a[10] = { 5,3,6,2,1,7,8,9,4,0 };
+	for (int i = 0; i < 10; ++i)
+	{
+		hp.Push(a[i]);
+	}
+	hp.Print();
+}

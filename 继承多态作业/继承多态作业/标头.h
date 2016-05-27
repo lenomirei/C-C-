@@ -4,11 +4,6 @@ using namespace std;
 
 
 typedef void(*FUNC)();
-//
-// 1.实现以下几个类的成员函数
-// 2.实现一个虚函数的覆盖及调用
-// 3.处理菱形继承问题。
-//
 
 // 植物
 class Botany
@@ -128,4 +123,6 @@ void PrintVtable(int *vTable)
 		FUNC f = (FUNC)vTable[i];
 		f();
 	}
-}
+}//因为指针和int型变量都是4个字节，所以我们用整型变量来存放地址
+
+
